@@ -26,7 +26,7 @@ run_full_set <- function(sim_type = "complex_covars", nsims = 5, cores = 8, seed
                         txt_eff, binary, v, sim_type)
   params
   
-  one_set <- function(DGP_specification, nsims = 5, cores = cores){
+  one_set <- function(DGP_specification, nsims = 5, cores = 30){
     
     # Get true PATE values by averaging...
     pop <- bind_rows(lapply(as.list(1:1000), function(x) gen_obs_dat(LPS_only = T,
@@ -58,7 +58,8 @@ run_full_set <- function(sim_type = "complex_covars", nsims = 5, cores = 8, seed
   }
 
   return(data.frame(foreach(j = 1:nrow(params), .combine = rbind) %do%
-                          {one_set(DGP_specification = params[j,], nsims = nsims)}))
+                          {one_set(DGP_specification = params[j,], cores = cores,
+                                   nsims = nsims)}))
 }
 
 
