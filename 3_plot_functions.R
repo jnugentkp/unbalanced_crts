@@ -25,8 +25,8 @@ summarize_binary <- function(results){
               tmle_bias_or = mean(log(ltmle_or_pe) - log(tmle_true_marg_or), na.rm = F),
               tmle_bias_rr = mean(log(ltmle_rr_pe) - log(tmle_true_marg_rr), na.rm = F),
               tmle_bias_rd = mean(ltmle_pe - tmle_true_marg_rd, na.rm = F),
-              glmm_bias = mean(log(glmm_pe) - log(glmm_true_cond_or), na.rm = T),
-              gee_bias = round(mean(log(gee_pe) - log(gee_true_marg_or), na.rm = T), digits = 4)) %>% 
+              glmm_bias = mean(plogis(glmm_pe) - plogis(glmm_true_cond_or), na.rm = T),
+              gee_bias = round(mean(plogis(gee_pe) - plogis(gee_true_marg_or), na.rm = T), digits = 4)) %>% 
     ungroup()
 }
 

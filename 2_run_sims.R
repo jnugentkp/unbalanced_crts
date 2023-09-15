@@ -16,7 +16,7 @@ run_full_set <- function(sim_type = "complex_covars", nsims = 5, cores = 8, seed
   trt_clusts <- c(25, 50)
   trt_clust_size <- c(5, 10)
   control_clusts <- c(25, 50)
-  control_clust_size <- c(1, 5)
+  control_clust_size <- c(1, 5, 10)
   txt_eff <- c(.25, 0, -.25)
   v <- 20
   binary <- c(T, F)
